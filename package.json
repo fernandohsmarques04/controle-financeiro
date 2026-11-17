@@ -1,0 +1,43 @@
+{
+  "name": "meu-financeiro-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Controle financeiro pessoal para Windows, com dados locais",
+  "author": "Fernando Marques",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.3.3",
+    "electron-builder": "26.18.1"
+  },
+  "build": {
+    "appId": "com.fernandohsmarques04.meufinanceiro",
+    "productName": "Meu Financeiro",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "main.cjs",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Meu-Financeiro-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Meu-Financeiro-Portable-${version}-${arch}.${ext}"
+    }
+  }
+}
